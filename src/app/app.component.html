@@ -3,8 +3,4 @@
 </h1>
 
 
-<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.$value}}
-  </li>
-</ul>
+ <h1>{{ (items | async)?.name }}</h1>
