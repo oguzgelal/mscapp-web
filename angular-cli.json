@@ -1,3 +1,4 @@
+
 {
   "project": {
     "version": "1.0.0-beta.15",
@@ -16,11 +17,12 @@
       "mobile": false,
       "styles": [
         "styles.scss",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "./assets/bootstrap-slate/css/slate.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
       "scripts": [
-        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "../node_modules/jquery/dist/jquery.js",
+        "./assets/bootstrap-slate/js/bootstrap.min.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
