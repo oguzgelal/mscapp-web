@@ -21,8 +21,10 @@
             <li><a href="#">Google Play</a></li>
           </ul>
         </li>
-        <li *ngIf="!_auth"><a href="#">Login</a></li>
-        <li *ngIf="!_auth"><a routerLink="/register">Sign Up</a></li>
+        <li *ngIf="!_user" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li *ngIf="!_user" routerLinkActive="active"><a routerLink="/register">Sign Up</a></li>
+        <li *ngIf="_user" routerLinkActive="active"><a routerLink="/dashboard">Dashboard</a></li>
+        <li *ngIf="_user" routerLinkActive="active"><a (click)="logout()">Logout</a></li>
       </ul>
     </div>
   </div>

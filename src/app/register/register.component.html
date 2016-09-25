@@ -1,12 +1,13 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 col-xs-12 alert alert-dismissible alert-info">
+
+  <!-- Register Form -->
+  <div class="row" *ngIf="_mode==='register'">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12 only-for-staff alert alert-dismissible alert-info">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <strong>Heads up!</strong> This dashboard is intended for museum staff / executives. If you are a visitor, please follow the download link to get the app.
     </div>
-
     <div class="col-sm-8 col-sm-offset-2 col-xs-12 well">
-      <form [formGroup]="registerForm" class="form-horizontal" (ngSubmit)="onFormSubmit()" onsubmit="return false">
+      <form [formGroup]="_registerForm" class="form-horizontal" (ngSubmit)="onFormSubmit()" onsubmit="return false">
         <fieldset>
           <legend>Join Museum Companion</legend>
           <div class="form-group {{ fieldHasErrors('name') ? 'has-error' : '' }}">
@@ -41,12 +42,41 @@
           </div>
           <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
-              <button type="submit" class="btn {{ registerForm.valid ? 'btn-success' : 'btn-default' }}" style="margin-top: 5px;" [disabled]="registerForm.valid">Join</button>
+              <button type="submit" class="btn {{ _registerForm.valid ? 'btn-success' : 'btn-default' }}" style="margin-top: 5px;" [disabled]="!_registerForm.valid">{{ _actionButtonText }}</button>
             </div>
           </div>
         </fieldset>
       </form>
-
     </div>
   </div>
+
+  <!-- Messages -->
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12" *ngIf="_mode==='resolved-success'">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Success!</h3>
+        </div>
+        <div class="panel-body">
+          {{ _resolvedMessage }}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12" *ngIf="_mode==='resolved-fail'">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Upps</h3>
+        </div>
+        <div class="panel-body">
+          {{ _resolvedMessage }}
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-default" (click)="reset()">
+              <i class="fa fa-chevron-left"></i> Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

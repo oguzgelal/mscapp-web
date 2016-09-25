@@ -1,3 +1,51 @@
-<p>
-  login works!
-</p>
+<div class="container">
+
+  <!-- Register Form -->
+  <div class="row" *ngIf="_mode==='login'">
+
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12 well">
+      <form [formGroup]="_loginForm" class="form-horizontal" (ngSubmit)="onFormSubmit()" onsubmit="return false">
+        <fieldset>
+          <legend>Login</legend>
+          <div class="form-group {{ fieldHasErrors('email') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+          </div>
+          <div class="form-group {{ fieldHasErrors('password') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" formControlName="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit" class="btn {{ _loginForm.valid ? 'btn-success' : 'btn-default' }}" style="margin-top: 5px;" [disabled]="!_loginForm.valid">{{ _actionButtonText }}</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12" *ngIf="_mode==='resolved-fail'">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title">Upps</h3>
+        </div>
+        <div class="panel-body">
+          {{ _resolvedMessage }}
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-default" (click)="reset()">
+              <i class="fa fa-chevron-left"></i> Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
