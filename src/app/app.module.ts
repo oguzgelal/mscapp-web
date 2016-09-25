@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { DashmenuComponent } from './dashboard/shared/dashmenu/dashmenu.component';
+import { DashcrumbComponent } from './dashboard/shared/dashcrumb/dashcrumb.component';
 
 const firebaseConfig = environment.firebaseConfig;
 const firebaseAuthConfig = {
@@ -26,7 +28,9 @@ const firebaseAuthConfig = {
     HomeComponent,
     DashboardComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashmenuComponent,
+    DashcrumbComponent
   ],
   imports: [
     BrowserModule,

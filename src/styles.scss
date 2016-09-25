@@ -5,6 +5,16 @@
 @media (max-width: 767px) {}
 @media (max-width: 480px) {}
 
+.container-gap {
+  margin-top: 40px;
+}
+@media (max-width: 767px) {
+  .container-gap {
+    margin-top: 20px;
+  }
+}
+
+
 .page-gap {
   height: 50px !important;
 }
