@@ -1,0 +1,31 @@
+@media (min-width: 1200px) {}
+@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 768px) and (max-width: 991px) {}
+//xs
+@media (max-width: 767px) {}
+@media (max-width: 480px) {}
+
+.page-gap {
+  height: 50px !important;
+}
+
+* {
+  outline: none !important;
+}
+
+input, textarea {
+  background-color: rgba(255,255,255,.1) !important;
+  color: white !important;
+}
+
+@media (max-width: 767px) {
+  .well, .alert {
+    border-radius: 0 !important;
+  }
+}
+
+.form-control:focus{
+    border: 1px solid black !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}

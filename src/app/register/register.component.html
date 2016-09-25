@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12 alert alert-dismissible alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Heads up!</strong> This dashboard is intended for museum staff / executives. If you are a visitor, please follow the download link to get the app.
+    </div>
+
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12 well">
+      <form [formGroup]="registerForm" class="form-horizontal" (ngSubmit)="onFormSubmit()" onsubmit="return false">
+        <fieldset>
+          <legend>Join Museum Companion</legend>
+          <div class="form-group {{ fieldHasErrors('name') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="name">
+            </div>
+          </div>
+          <div class="form-group {{ fieldHasErrors('email') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+          </div>
+          <div class="form-group {{ passwordFieldError() ? 'has-error' : '' }}" formGroupName="passwordMatch">
+            <label class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" formControlName="password">
+            </div>
+          </div>
+          <div class="form-group {{ passwordRepeatFieldError() ? 'has-error' : '' }}" formGroupName="passwordMatch">
+            <label class="col-sm-2 control-label">Password (again)</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" formControlName="passwordRepeat">
+            </div>
+          </div>
+          <div class="form-group {{ fieldHasErrors('role') ? 'has-error' : '' }}">
+            <label class="col-sm-2 control-label">Role</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="ex. Museum Manager" formControlName="role">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit" class="btn {{ registerForm.valid ? 'btn-success' : 'btn-default' }}" style="margin-top: 5px;" [disabled]="registerForm.valid">Join</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+    </div>
+  </div>
+</div>
