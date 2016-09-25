@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FirebaseAuth } from 'angularfire2';
+import { AuthService } from '../services/auth/';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +14,7 @@ export class RegisterComponent {
   private _mode: string = "register";
   private _resolvedMessage: string = "";
 
-  constructor(private _fb: FormBuilder, private _auth: FirebaseAuth) {
+  constructor(private _fb: FormBuilder, private _auth: AuthService) {
     this._registerForm = this._fb.group({
       name: ["", [Validators.required, Validators.minLength(3)]],
       email: ["", [Validators.required, Validators.minLength(6), this.validEmail]],
@@ -77,11 +77,10 @@ export class RegisterComponent {
       .catch(res => this._onRegisterFail(res));
   }
   private _onRegisterSuccess(res) {
-    let user = res.auth;
-    user.sendEmailVerification()
+    this._auth.sendEmailVerification()
       .then((res) => {
         this._mode = "resolved-success";
-        this._resolvedMessage = "Registration completed. A verification email has been sent to " + user.email;
+        this._resolvedMessage = "Registration completed. A verification email has been sent to " + this._auth.user.email;
       })
       .catch((res) => {
         this._mode = "resolved-success";

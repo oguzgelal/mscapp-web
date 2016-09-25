@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { appRoutingProviders, routing } from './app.router';
 
+import { AuthService } from './services/auth/';
+
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AuthMethods, AuthProviders, AngularFireModule } from 'angularfire2';
@@ -34,7 +36,10 @@ const firebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     routing
   ],
-  providers: [appRoutingProviders],
+  providers: [
+    appRoutingProviders,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

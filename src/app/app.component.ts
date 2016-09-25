@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AngularFire, FirebaseAuth } from 'angularfire2';
+import { AuthService } from './services/auth/';
+
 
 @Component({
   selector: 'app-root',
@@ -8,18 +9,11 @@ import { AngularFire, FirebaseAuth } from 'angularfire2';
 })
 export class AppComponent {
 
-  private _user;
-
-  constructor(private _af: AngularFire, private _auth: FirebaseAuth) {
-    this._auth.subscribe(auth => {
-      this._user = auth;
-      console.log(this._user);
-    });
+  constructor(private _auth: AuthService) {
   }
 
   logout(): void {
     this._auth.logout();
   }
 
-  title = 'app works!';
 }
